@@ -1,9 +1,8 @@
 import express from 'express';
+import { getTickets } from '../controllers/tickets.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.status(200).json({ message: "Get Tickets routes"});
-});
+router.get('/', getTickets);
 
 export default router;
