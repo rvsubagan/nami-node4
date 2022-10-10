@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import ticketsRoutes from './routes/tickets.js';
 
 
 const app = express();
@@ -9,6 +10,7 @@ dotenv.config();
 
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/tickets', ticketsRoutes);
 
 app.get('/', (req, res) => {
     res.status(200).json({ message: "Welcome to Node API! "});
