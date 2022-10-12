@@ -25,9 +25,9 @@ export const getTicket = async (req, res) => {
 }
 
 export const createTicket = async (req, res) => {
-   const { title, message } = req.body;
+   const { title, description } = req.body;
 
-   const ticket = new Ticket({ title, message })
+   const ticket = new Ticket({ title, description })
 
    try {
       await ticket.save();
@@ -40,13 +40,13 @@ export const createTicket = async (req, res) => {
 
 export const updateTicket = async (req, res) => {
    const { id } = req.params;
-   const { title, message } = req.body;
+   const { title, description } = req.body;
 
    if(!mongoose.Types.ObjectId.isValid(id))
       return res.status(404).send(`No post with id: ${id}`);
 
-   const updatedTicket = { title, message };
-   await Ticket.findByIdAndUpdateA(id, updatedTicket, { new: true });
+   const updatedTicket = { title, description };
+   await Ticket.findByIdAndUpdate(id, updatedTicket, { new: true });
    res.json(updatedTicket);
 }
 
