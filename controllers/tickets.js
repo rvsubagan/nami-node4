@@ -13,6 +13,10 @@ export const getTickets = async (req, res) => {
 }
 
 export const getTicket = async (req, res) => {
+   // Without destructuring
+   //const id = req.params.id;
+   
+   // With destructuring
    const { id } = req.params;
 
    try {
@@ -25,8 +29,21 @@ export const getTicket = async (req, res) => {
 }
 
 export const createTicket = async (req, res) => {
+   /* Assigning values without desctructuring
+    * const title = req.body.title;
+    * const description = req.body.description;
+    */
+   
+   // Assigning values with destructuring
    const { title, description } = req.body;
 
+   /* Assigning values without destructuring
+     * const ticket = {
+     *   title: req.body.title,
+     *   description: req.body.description
+     * };
+     */
+   // Assigning values with destructring
    const ticket = new Ticket({ title, description })
 
    try {
